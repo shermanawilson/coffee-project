@@ -1,24 +1,24 @@
 "use strict"
 
-// function renderCoffee(coffee) {
-//     var html = '<tr class="coffee">';
-//     html += '<td>' + coffee.id + '</td>';
-//     html += '<td>' + coffee.name + '</td>';
-//     html += '<td>' + coffee.roast + '</td>';
-//     html += '</tr>';
-//
-//     return html;
-// }
+function renderCoffee(coffee) {
+    var html = '<select class="coffee">';
+    html += '<option>' + coffee.id + '</option>';
+    html += '<option>' + coffee.name + '</option>';
+    html += '<option>' + coffee.roast + '</option>';
+    html += '</select>';
+
+    return html;
+}
 
 
 //
 //
 //
 
-let coffeez = document.querySelector('.coffees')
-coffeez.addEventListener('input', function coffe() {
-    document.querySelector('.coffees2').style.display = "block";
-});
+// let coffeez = document.querySelector('.coffees')
+// coffeez.addEventListener('input', function coffe() {
+//     document.querySelector('.coffees2').style.display = "block";
+// });
 
 //
 //
