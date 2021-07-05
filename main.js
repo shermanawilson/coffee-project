@@ -1,25 +1,41 @@
 "use strict"
 
-function renderCoffee(coffee) {
-    var html = '<select class="coffee">';
-        html += '<option>' + coffee.id + '</option>';
-        html += '<option>' + coffee.name + '</option>';
-        html += '<option>' + coffee.roast + '</option>';
-        html += '</select>';
+// function renderCoffee(coffee) {
+//     var html = '<select class="coffee">';
+//         html += coffee.id;
+//         html += coffee.name;
+//         html += coffee.roast;
+//
+//     return html;
+// }
 
-    return html;
-}
+// function renderCoffees(coffees) {
+//     let html = '';
+//     for(let i = coffees.length - 1; i >= 0; i--) {
+//         html += renderCoffee(coffees[i]);
+//     }
+//     return html;
+// }
+let mainSelectBox = document.querySelector('#displayCoffeeName');
+let alterSelectBox = document.querySelector('#displayRoastType');
 
-function renderCoffees(coffees) {
-    let html = '';
+let selectBox = document.querySelector('.coffeeName');
+selectBox.addEventListener('keypress', function selectBoxFunction(element) {
+    let selectBoxOption = selectBox.value;
+    let optionElement = document.querySelector('#coffeeInfo');
+    let i = coffees.length;
+    // optionElement.innerHTML = coffees[i].name;
+
     for(let i = coffees.length - 1; i >= 0; i--) {
-        html += renderCoffee(coffees[i]);
+        let html = coffees[i];
+        return optionElement.innerHTML = html.name;
     }
-    return html;
-}
+});
 
 
-// from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
+// option value 1 , light , display all light coffees
+//
+// // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 const coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
     {id: 2, name: 'Half City', roast: 'light'},
@@ -40,21 +56,21 @@ const coffees = [
 const tbody = document.querySelector('#coffeeInfo');
 
 const roastSelection = document.querySelector('#coffeeName');
-
-function updateCoffees(e) {
-    e.preventDefault(); // don't submit the form, we just want to update the data
-    const selectedRoast = roastSelection.value;
-    const filteredCoffees = [];
-    coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast) {
-            filteredCoffees.push(coffee);
-        }
-    });
-    roastSelection.innerHTML = renderCoffees(filteredCoffees);
-}
-
-const submitButton = document.querySelector('#submit');
-
-tbody.innerHTML = renderCoffees(coffees);
-
-submitButton.addEventListener('click', updateCoffees);
+//
+// function updateCoffees(e) {
+//     e.preventDefault(); // don't submit the form, we just want to update the data
+//     const selectedRoast = roastSelection.value;
+//     const filteredCoffees = [];
+//     coffees.forEach(function(coffee) {
+//         if (coffee.roast === selectedRoast) {
+//             filteredCoffees.push(coffee);
+//         }
+//     });
+//     roastSelection.innerHTML = renderCoffees(filteredCoffees);
+// }
+//
+// const submitButton = document.querySelector('#submit');
+//
+// tbody.innerHTML = renderCoffees(coffees);
+//
+// submitButton.addEventListener('click', updateCoffees);
