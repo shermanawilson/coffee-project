@@ -10,6 +10,19 @@
 //     return html;
 // }
 
+
+//
+//
+//
+
+let coffeez = document.querySelector('.coffees')
+coffeez.addEventListener('input', function coffe() {
+    document.querySelector('.coffees2').style.display = "block";
+});
+
+//
+//
+//
 function renderCoffees(coffees) {
     var html = '';
     for(var i = coffees.length - 1; i >= 0; i--) {
