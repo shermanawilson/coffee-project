@@ -10,6 +10,9 @@ function renderCoffee(coffee) {
     return html;
 }
 
+//
+//
+//
 function renderCoffees(coffees) {
     var html = '';
     for(let i = coffees.length - 1; i >= 0; i--) {
