@@ -1,11 +1,11 @@
 "use strict"
 
 function renderCoffee(coffee) {
-    var html = class="coffee";
-    html += coffee.id;
-    html += coffee.name;
-    html += coffee.roast;
-    html += '</option>';
+    var html = '<select class="coffee">';
+        html += '<option>' + coffee.id + '</option>';
+        html += '<option>' + coffee.name + '</option>';
+        html += '<option>' + coffee.roast + '</option>';
+        html += '</select>';
 
     return html;
 }
@@ -14,27 +14,16 @@ function renderCoffee(coffee) {
 //
 //
 function renderCoffees(coffees) {
-    var html = '';
+    let html = '';
     for(let i = coffees.length - 1; i >= 0; i--) {
         html += renderCoffee(coffees[i]);
     }
     return html;
 }
 
-function updateCoffees(e) {
-    e.preventDefault(); // don't submit the form, we just want to update the data
-    var selectedRoast = roastSelection.value;
-    var filteredCoffees = [];
-    coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast) {
-            filteredCoffees.push(coffee);
-        }
-    });
-    tbody.innerHTML = renderCoffees(filteredCoffees);
-}
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
-var coffees = [
+const coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
     {id: 2, name: 'Half City', roast: 'light'},
     {id: 3, name: 'Cinnamon', roast: 'light'},
@@ -51,9 +40,23 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
-var tbody = document.querySelector('#coffees');
-var submitButton = document.querySelector('#submit');
-var roastSelection = document.querySelector('#roast-selection');
+const tbody = document.querySelector('#coffeeInfo');
+
+const roastSelection = document.querySelector('#coffees');
+
+function updateCoffees(e) {
+    e.preventDefault(); // don't submit the form, we just want to update the data
+    const selectedRoast = roastSelection.value;
+    const filteredCoffees = [];
+    coffees.forEach(function(coffee) {
+        if (coffee.roast === selectedRoast) {
+            filteredCoffees.push(coffee);
+        }
+    });
+    roastSelection.innerHTML = renderCoffees(filteredCoffees);
+}
+
+const submitButton = document.querySelector('#submit');
 
 tbody.innerHTML = renderCoffees(coffees);
 
