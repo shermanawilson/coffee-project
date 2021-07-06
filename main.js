@@ -1,40 +1,35 @@
 "use strict"
 
-// function renderCoffee(coffee) {
-//     var html = '<select class="coffee">';
-//         html += coffee.id;
-//         html += coffee.name;
-//         html += coffee.roast;
-//
-//     return html;
-// }
+function renderCoffee(coffee) {
+    var html = '<tr id="coffees">';
+    html += '<td>' + coffee.id + '</td>';
+    html += '<td>' + coffee.name + '</td>';
+    html += '<td>' + coffee.roast + '</td>';
+    html += '</tr>';
 
-// function renderCoffees(coffees) {
-//     let html = '';
-//     for(let i = coffees.length - 1; i >= 0; i--) {
-//         html += renderCoffee(coffees[i]);
-//     }
-//     return html;
-// }
-let mainSelectBox = document.querySelector('#displayCoffeeName');
-let alterSelectBox = document.querySelector('#displayRoastType');
+    return html;
+}
 
-let selectBox = document.querySelector('.coffeeName');
-selectBox.addEventListener('keypress', function selectBoxFunction(element) {
-    let selectBoxOption = selectBox.value;
-    let optionElement = document.querySelector('#coffeeInfo');
-    let i = coffees.length;
-    // optionElement.innerHTML = coffees[i].name;
-
-    for(let i = coffees.length - 1; i >= 0; i--) {
-        let html = coffees[i];
-        return optionElement.innerHTML = html.name;
+function renderCoffees(coffees) {
+    var html = '';
+    for (var i = coffees.length - 1; i >= 0; i--) {
+        html += renderCoffee(coffees[i]);
     }
-});
+    return html;
+}
 
+function updateCoffees(e) {
+    e.preventDefault(); // don't submit the form, we just want to update the data
+    var selectedRoast = roastSelection.value;
+    var filteredCoffees = [];
+    coffees.forEach(function (coffee) {
+        if (coffee.roast === selectedRoast) {
+            filteredCoffees.push(coffee);
+        }
+    });
+    tbody.innerHTML = renderCoffees(filteredCoffees);
+}
 
-// option value 1 , light , display all light coffees
-//
 // // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 const coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
@@ -53,24 +48,11 @@ const coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
-const tbody = document.querySelector('#coffeeInfo');
+var tbody = document.querySelector('#coffees');
 
-const roastSelection = document.querySelector('#coffeeName');
-//
-// function updateCoffees(e) {
-//     e.preventDefault(); // don't submit the form, we just want to update the data
-//     const selectedRoast = roastSelection.value;
-//     const filteredCoffees = [];
-//     coffees.forEach(function(coffee) {
-//         if (coffee.roast === selectedRoast) {
-//             filteredCoffees.push(coffee);
-//         }
-//     });
-//     roastSelection.innerHTML = renderCoffees(filteredCoffees);
-// }
-//
-// const submitButton = document.querySelector('#submit');
-//
-// tbody.innerHTML = renderCoffees(coffees);
-//
-// submitButton.addEventListener('click', updateCoffees);
+var submitButton = document.querySelector('#submit');
+var roastSelection = document.querySelector('#roast-selection');
+
+tbody.innerHTML = renderCoffees(coffees);
+
+submitButton.addEventListener('click', updateCoffees);
