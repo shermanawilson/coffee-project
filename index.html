@@ -17,24 +17,26 @@
 <h1>Coffee!</h1>
 <hr>
 <div class="row-6">
-    <div class="col-6">
+    <div class="col-6" id="coffees">
         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+        <label for="roast-selection"></label>
         <p><strong>Roast</strong></p>
-        <select class="custom-select mr-sm-2 coffee" id="inlineFormCustomSelect" >
+        <select id="roast-selection" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected>all</option>
             <option value="1">light</option>
             <option value="2">medium</option>
             <option value="3">dark</option>
+
         </select>
 
         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-        <div class="coffees">
+        <div class="coffeeName">
             <p><strong>Coffee Name</strong></p>
-            <input type="text" class="form-control coffees2"> Hey GIRL
+            <input id="coffeeNameTextBox" type="text" class="form-control coffees2">
         </div>
         <br>
         <div>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+            <button id="submit" type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
         </div>
         <!--   This is the Add Coffee Section     -->
         <hr>
@@ -59,7 +61,10 @@
         </div>
     </div>
     <div class="col-6">
-        <div id="coffeeInfo"></div>
+        <div id="coffeeInfo">
+            <h1 id="displayCoffeeName"></h1>
+            <p id="displayRoastType"></p>
+        </div>
     </div>
 </div>
 
